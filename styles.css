@@ -1,0 +1,17 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: y=100%;
+    width: 100%;
+    background-color: blue;
+    color: black;
+    text-align: center;
+  }
+  
+  .highlight {
+    background-color: yellow
+  }
+  
+  @import "navbar";
+  
+  
