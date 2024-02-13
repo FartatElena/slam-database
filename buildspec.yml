@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      php: 7.4
+  build:
+    commands:
+      - git clone https://github.com/FartatElena/slam-database.git
+
+
+
