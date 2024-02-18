@@ -98,10 +98,10 @@ include 'includes/header.php';
     </thead>
     <tbody>
     <?php
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "Non Amazon";
+        $servername = "slam-database.c78imuwuqt5q.eu-west-2.rds.amazonaws.com";
+        $username = "elena";
+        $password = "25K27ab976EF!";
+        $dbname = "SLAM";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -109,7 +109,7 @@ include 'includes/header.php';
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM zeus";
+    $sql = "SELECT * FROM ZEUS";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -119,8 +119,8 @@ include 'includes/header.php';
         }
 
         function customDateSort($a, $b) {
-            $dateA = DateTime::createFromFormat('d.m.Y H:i', $a['ARRIVAL STOP 1']);
-            $dateB = DateTime::createFromFormat('d.m.Y H:i', $b['ARRIVAL STOP 1']);
+            $dateA = DateTime::createFromFormat('d.m.Y H:i', $a['STOP_1_ARRIVAL']);
+            $dateB = DateTime::createFromFormat('d.m.Y H:i', $b['STOP_1_ARRIVAL']);
             
             return $dateB <=> $dateA; 
         }
@@ -148,17 +148,17 @@ include 'includes/header.php';
         foreach ($data as $row) {
             echo "<tr>";
                 echo "<td>" . $row["REF"] . "</td>";
-                echo "<td>" . $row["STOP 1"] . "</td>";
-                echo "<td>" . $row["STOP 2"] . "</td>";
-                echo "<td>" . $row["ARRIVAL STOP 1"] . "</td>";
-                echo "<td>" . $row["ARRIVAL STOP 2"] . "</td>";
+                echo "<td>" . $row["STOP_1"] . "</td>";
+                echo "<td>" . $row["STOP_2"] . "</td>";
+                echo "<td>" . $row["STOP_1_ARRIVAL"] . "</td>";
+                echo "<td>" . $row["STOP_2_ARRIVAL"] . "</td>";
                 echo "<td class='editable' data-field='EQUIPMENT'>" . $row["EQUIPMENT"] . "</td>";
                 echo "<td class='editable' data-field='DRIVER'>" . $row["DRIVER"] . "</td>";
-                echo "<td class='editable' data-field='TRAILER IN'>" . $row["TRAILER IN"] . "</td>";
-                echo "<td class='editable' data-field='TRAILER OUT'>" . $row["TRAILER OUT"] . "</td>";
+                echo "<td class='editable' data-field='TRAILER IN'>" . $row["TRL_IN"] . "</td>";
+                echo "<td class='editable' data-field='TRAILER OUT'>" . $row["TRL_OUT"] . "</td>";
 
                 $NeededInfo = "";
-                if (strpos($row["STOP 1"], "DECATHLON DC. NN4 7HT") !== false) {
+                if (strpos($row["STOP_1"], "DECATHLON DC. NN4 7HT") !== false) {
                     $NeededInfo = "<td class='copyable-info'>
                         <div class='copyable-content'>
        Please do your best to arrive on time
@@ -169,7 +169,7 @@ If anything is unclear, please ask on group.
                     </td>";
                 }
 
-                if (strpos($row["STOP 1"], "P&G") !== false) {
+                if (strpos($row["STOP_1"], "P&G") !== false) {
                     $NeededInfo = "<td class='copyable-info
                         <div class='copyable-content'>
                         Please use the Zeus app. Keep app open until job is complete
@@ -193,7 +193,7 @@ If anything is unclear, please ask on group.
                     </td>";
                 }
 
-                if (strpos($row["STOP 1"], "decathlon") !== false) {
+                if (strpos($row["STOP_1"], "decathlon") !== false) {
                     $NeededInfo = "<td class='copyable-info'>
                         <div class='copyable-content'>
 Please check your relay on arrival to make sure it automatically detected your arrival and if it does not, please swipe by clicking on please press need help with arrival -- app not detecting arrival do not leave origin site without paperwork and send us pictures of *signed* paperwork after delivery as we need to provide amazon with proof of delivery. 
@@ -201,7 +201,7 @@ Please check your relay on arrival to make sure it automatically detected your a
                      ‼️please read the above‼️
                         </div>
                     </td>";
-                } elseif ($row["STOP 1"] == "SWA_PROTEINW" && $row["Stop 2"] == "SWA_ABNORMAL.MAN8") {
+                } elseif ($row["STOP_1"] == "SWA_PROTEINW" && $row["STOP_2"] == "SWA_ABNORMAL.MAN8") {
                     // Additional condition for Stop 1 and Stop 2
                     $NeededInfo = "<td class='copyable-info'>
                         <div class='copyable-content'>

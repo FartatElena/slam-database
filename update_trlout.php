@@ -1,8 +1,8 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "Non Amazon";
+$servername = "slam-database.c78imuwuqt5q.eu-west-2.rds.amazonaws.com";
+$username = "elena";
+$password = "25K27ab976EF!";
+$dbname = "SLAM";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,7 +17,7 @@ $field = $_POST['field'];
 $value = $_POST['value'];
 
 // Perform the database update for Equipment Type
-$sql = "UPDATE zeus SET `TRAILER OUT` = ? WHERE `REF` = ?";
+$sql = "UPDATE ZEUS SET `TRL_OUT` = ? WHERE `REF` = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {

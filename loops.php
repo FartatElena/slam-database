@@ -83,10 +83,10 @@ include 'includes/header.php';
     </thead>
     <tbody>
     <?php
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "Non Amazon";
+        $servername = "slam-database.c78imuwuqt5q.eu-west-2.rds.amazonaws.com";
+        $username = "elena";
+        $password = "25K27ab976EF!";
+        $dbname = "SLAM";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -98,24 +98,24 @@ include 'includes/header.php';
     // Function to fetch and display data
     function displayData($conn) {
         // SQL query to retrieve data and sort by Block ID and Stop 1 Yard Arrival
-        $sql = "SELECT * FROM Loops ORDER BY `Block ID`, STR_TO_DATE(`Stop 1 Yard Arrival`, '%d.%m.%Y %H:%i') DESC";
+        $sql = "SELECT * FROM LOOPS ORDER BY `BLOCK_ID`, STR_TO_DATE(`STOP_1_ARRIVAL`, '%d.%m.%Y %H:%i') DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo "<tr class='" . ($row["Cancelled"] == "yes" ? "red-row" : "") . "'>";
-                echo "<td>" . $row["Block ID"] . "</td>";
-                echo "<td>" . $row["Trip ID"] . "</td>";
-                echo "<td>" . $row["VR ID"] . "</td>";
-                echo "<td>" . $row["Stop 1"] . "</td>";
-                echo "<td>" . $row["Stop 2"] . "</td>";
-                echo "<td>" . $row["Stop 1 Yard Arrival"] . "</td>";
-                echo "<td class='editable' data-field='Driver'>" . $row["Driver"] . "</td>";
-                echo "<td class='editable' data-field='Reg Number'>" . $row["Reg Number"] . "</td>";
+                echo "<tr class='" . ($row["CANCELLED"] == "yes" ? "red-row" : "") . "'>";
+                echo "<td>" . $row["BLOCK_ID"] . "</td>";
+                echo "<td>" . $row["TRIP_ID"] . "</td>";
+                echo "<td>" . $row["VRID"] . "</td>";
+                echo "<td>" . $row["STOP_1"] . "</td>";
+                echo "<td>" . $row["STOP_2"] . "</td>";
+                echo "<td>" . $row["STOP_1_ARRIVAL"] . "</td>";
+                echo "<td class='editable' data-field='Driver'>" . $row["DRIVER"] . "</td>";
+                echo "<td class='editable' data-field='Reg Number'>" . $row["REG_NUMBER"] . "</td>";
                 echo "<td>" . $row["CR_ID"] . "</td>";
-                echo "<td>" . $row["Shipper Accounts"] . "</td>";
-                echo "<td class='editable' data-field='Vehicle ID'>" . $row["Vehicle ID"] . "</td>";
-                echo "<td class='editable' data-field='(A)DHOC/ (U)PDATED'>" . $row["(A)DHOC/ (U)PDATED"] . "</td>";
+                echo "<td>" . $row["SHIPPER_ACCOUNTS"] . "</td>";
+                echo "<td class='editable' data-field='Vehicle ID'>" . $row["VEHICLE_ID"] . "</td>";
+                echo "<td class='editable' data-field='(A)DHOC/ (U)PDATED'>" . $row["ADHOC"] . "</td>";
                 echo "<td class='copyable-info'>
                     <div class='copyable-content'>
                     In light of another bridge strike, this time involving an Amazon double deck trailer.
@@ -126,7 +126,7 @@ include 'includes/header.php';
                     VD41, VD42: connect trailer-> with engine on and headlights on, take a picture of the EBS alarm fitted to the trailer (light should be off)-> post it on your group-> check that no ABS warning is showing on the dashboard
                     </div>
                 </td>";
-                echo "<td class='editable' data-field='Cancelled'>" . $row["Cancelled"] . "</td>";
+                echo "<td class='editable' data-field='Cancelled'>" . $row["CANCELLED"] . "</td>";
                 echo "</tr>";
             }
         } else {

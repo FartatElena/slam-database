@@ -17,7 +17,7 @@ $field = $_POST['field'];
 $value = $_POST['value'];
 
 // Perform the database update for Equipment Type
-$sql = "UPDATE gh SET `Equipment Type` = ? WHERE `VR ID` = ?";
+$sql = "UPDATE GATEHOUSE SET `EQUIPMENT_TYPE` = ? WHERE `VRID` = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {

@@ -1,8 +1,8 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "Non Amazon";
+$servername = "slam-database.c78imuwuqt5q.eu-west-2.rds.amazonaws.com";
+$username = "elena";
+$password = "25K27ab976EF!";
+$dbname = "SLAM";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,7 +17,7 @@ $field = $_POST['field'];
 $value = $_POST['value'];
 
 // Perform the database update for (A)DHOC/(U)PDATED
-$sql = "UPDATE Loops SET `(A)DHOC/ (U)PDATED` = ? WHERE `Block ID` = ?";
+$sql = "UPDATE LOOPS SET `ADHOC` = ? WHERE `BLOCK_ID` = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {

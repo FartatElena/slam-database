@@ -87,10 +87,10 @@ include 'includes/header.php';
     </thead>
     <tbody>
     <?php
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "Non Amazon";
+        $servername = "slam-database.c78imuwuqt5q.eu-west-2.rds.amazonaws.com";
+        $username = "elena";
+        $password = "25K27ab976EF!";
+        $dbname = "SLAM";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -102,7 +102,7 @@ include 'includes/header.php';
     // Function to fetch and display data
     function displayData($conn) {
         // SQL query to retrieve data
-        $sql = "SELECT * FROM gh";
+        $sql = "SELECT * FROM GATEHOUSE";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -113,8 +113,8 @@ include 'includes/header.php';
 
             // Custom sorting function
             function customDateSort($a, $b) {
-                $dateA = DateTime::createFromFormat('d.m.Y H:i', $a['Stop 1 Yard Arrival']);
-                $dateB = DateTime::createFromFormat('d.m.Y H:i', $b['Stop 1 Yard Arrival']);
+                $dateA = DateTime::createFromFormat('d.m.Y H:i', $a['STOP_1_ARRIVAL']);
+                $dateB = DateTime::createFromFormat('d.m.Y H:i', $b['STOP_1_ARRIVAL']);
 
                 return $dateB <=> $dateA; // Sort in descending order
             }

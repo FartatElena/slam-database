@@ -1,8 +1,8 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "Non Amazon";
+$servername = "STOP_1_ARRIVAL";
+$username = "elena";
+$password = "25K27ab976EF!";
+$dbname = "SLAM";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,7 +17,7 @@ $field = $_POST['field'];
 $value = $_POST['value'];
 
 // Perform the database update for (A)DHOC/(U)PDATED
-$sql = "UPDATE Loops SET `Vehicle ID` = ? WHERE `Block ID` = ?";
+$sql = "UPDATE LOOPS SET `VEHICLE_ID` = ? WHERE `BLOCK_ID` = ?";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {
